@@ -1,0 +1,56 @@
+from matplotlib import pyplot as plt
+import seaborn as sns
+import pandas as pd
+import numpy as np
+y_1=sns.load_dataset("penguin")
+var=[1,2,3,4,5,6,7]
+var_1=[2,3,4,1,5,6,7]
+x_1=pd.DataFrame({"var":var,"var_1":var_1})
+#plt.plot(var,var_1)
+sns.lineplot(x="var",y="var_1",data=x_1,hue="sex",style="sex",
+             palette="Accent",markers=["o",">"],dashes="False",
+             legend="False")
+sns.displot(y_1("column name",bins=[170,180,190,200],kde=True,rug=True,color="g",log_scale=True))
+order_1=("column1","column2")
+sns.barplot(x=y_1.column_name,y=y_1.column_name,hue="sex",order="order_1",hue_order=["female","male"],ci=10,orient="v",saturation=0.3,capsize=0.5,errcolor="b",errlength=0.5,dodge=False)
+plt.show()
+m={"Male":"*","Female":"^"}
+sns.scatterplot(x="column_name",y="column_name",data=y_1,hue="sex",style="sex",size="sex",sizes=(10,40),palette="color_name",alpha=0.5,markers=m,)
+var2=np.linespace(1,10,20).reshape(4,5)
+v=sns.heatmap(var2,vmin=0,vmax=10,cmap="color_name",annot=True,linewidth=10,linecolor="y",cbar=False,xticklabels=False)
+v.set(xlabel="python",ylabel="ws")
+sns.set(font_scale=5)
+x=y_1.drop(columns="column_name")
+sns.heatmap(x)
+sns.countplot(x="column_name",data=y_1,hue="column_name",colors="color_name",saturation=0.5)
+sns.violinplot(x="column_name",y="column_name",data=y_1,hue="column_name",linewidth=2,palette="color_name",order=["column_name"],saturation=0.2,split=True,scale="count/area/width",inner="quart/box/quartile/point/stick/None")
+sns.pairplot(y_1,vars=["column_name","column_name"],hue="column_name",hue_order=["Female","Male"],palette="color_name",kind="reg/scatter/kde/hist")
+sns.stripplot(x="column_name",y="column_name",data=y_1,hue="column_name",palette="color_name",linewidth=3,jitter=4,size=10)
+sns.set(style="whitegrid")
+sns.boxplot(x="column_name",y="column_name",data=y_1,hue="column_name",color="color_name",order=["column_name","column_name"],showMeans=True,meanprops={"marker":"+","markeredgecolor":"b"},linewidth=3,palette="color_name",orient="v")
+sns.factorplot(x="column_name",y="column_name",data=y_1,hue="column_name",kind="bar/box")
+sns.catplot(x="column_name",y="column_name",data=y_1,hue="column_name",palette="color_name",height=3,kind="bar/strip/swarm/box/violin/boxen/point/count")
+sns.set_style("dark")
+sns.despine()
+sns.set_context("poster",font_scale=2)
+fg=sns.FacetGrid(y_1,col="column_name",hue="column_name")
+fg.map(plt.scatter,"column_name","column_name").add_legend()
+#style(design change)
+#palette(colour change)
+#hue=(to differentiate column you want to use)
+#marker=(to make design on corners)
+#dashes=(to remove dotted lines)
+#legend=(to remove box)
+#kde = (for curves)
+#log_scale=(to convert graph in log values
+#order=(to arrange in particular order)
+#ci=(to set size of black line by putting values from 0-100)
+#orient=(to plot graph horizontally or vertically)
+#saturation=(to blur colors)
+#dodge=(to overlap two bar)
+#annot=(to display values in heatmap)
+#cbar=(to remove bar)
+#xticklabel=(to remove label)
+#kind=(to change graph type)
+#jitter=(to scatter values)
+#despine=(to remove axes)
